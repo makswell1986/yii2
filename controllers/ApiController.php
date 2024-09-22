@@ -1,14 +1,38 @@
 <?php
 namespace app\controllers;
 
-use yii\rest\ActiveController;
+use Yii;
+use app\models\Api;
+use yii\rest\Controller;
+use yii\filters\auth\HttpBasicAuth;
 
-class ApiController extends ActiveController
+class ApiController extends Controller
 {
-    public $modelClass = 'app\models\api';
+
+
+
+
+    public function behaviors()
+{
+    $behaviors = parent::behaviors();
+    $behaviors['authenticator'] = [
+        'class' => HttpBasicAuth::class,
+    ];
+    return $behaviors;
+} 
+
+
+
+
      
 
+    public function actionView($code)
+    {
    
+        
+        return Api::findOne($code);
+    }
+
  
 }
 

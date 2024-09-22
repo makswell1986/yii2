@@ -26,6 +26,7 @@ $config = [
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
+            'enableSession'=>false
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -52,7 +53,8 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 /*'<action:[-a-zA-Z0-9_]+>' => 'site/<action>',*/
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'api'], 
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'api', 'except' => ['delete', 'create', 'update']],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'news'] 
             ],
         ],
   
