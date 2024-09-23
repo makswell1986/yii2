@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 
+
 /**
  * This is the model class for table "users".
  *
@@ -17,10 +18,12 @@ use Yii;
  * @property string $created_at
  * @property string|null $updated_at
  */
-class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
+class User extends \yii\db\ActiveRecord implements \yii\filters\RateLimitInterface,\yii\web\IdentityInterface
 {
 
-
+    public $rateLimit = 1;
+    public $allowance;
+    public $allowance_updated_at;
 
     /**
      * {@inheritdoc}
@@ -88,6 +91,27 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     }
 
 
+    /**
+    * Rate limit
+    **/
+
+  
+
+    public function getRateLimit($request, $action) {
+        return [$this->rateLimit,1];
+    }
+
+    public function loadAllowance($request, $action)
+    {
+        return [$this->allowance, $this->allowance_updated_at];
+    }
+
+    public function saveAllowance($request, $action, $allowance, $timestamp)
+    {
+        $this->allowance = $allowance;
+        $this->allowance_updated_at = $timestamp;
+        $this->save();
+    }
 
 
 
