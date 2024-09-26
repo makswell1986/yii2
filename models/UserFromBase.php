@@ -3,11 +3,9 @@
 namespace app\models;
 
 use Yii;
-use app\models\UserFromBase;
-use yii\db\ActiveRecord;
 
 /**
- * This is the model class for table "users".
+ * This is the model class for table "user".
  *
  * @property int $id
  * @property string $last_name
@@ -16,19 +14,16 @@ use yii\db\ActiveRecord;
  * @property string $password
  * @property string|null $auth_key
  * @property string|null $access_token
- * @property string $created_at
+ * @property int $allowance
+ * @property int $allowance_updated_at
+ * @property string|null $created_at
  * @property string|null $updated_at
  */
-class User extends ActiveRecord   implements \yii\web\IdentityInterface, \yii\filters\RateLimitInterface
+class UserFromBase extends \yii\db\ActiveRecord
 {
-
-
-    public $rateLimit=5;
-    public $allowance_updated_at;
-
-    public $allowance;
-
-
+    /**
+     * {@inheritdoc}
+     */
     public static function tableName()
     {
         return 'user';
@@ -71,12 +66,10 @@ class User extends ActiveRecord   implements \yii\web\IdentityInterface, \yii\fi
     }
 
 
-    /**
-     * {@inheritdoc}
-     */
+
     public static function findIdentity($id)
     {
-        return static::findOne($id);
+        return UserFromBase::findOne($id);
     }
 
     /**
@@ -86,7 +79,7 @@ class User extends ActiveRecord   implements \yii\web\IdentityInterface, \yii\fi
     {
 
         
-        return static::findOne(['access_token' => $token]);
+        return UserFromBase::findOne(['access_token' => $token]);
     
     }
     /**
@@ -98,7 +91,7 @@ class User extends ActiveRecord   implements \yii\web\IdentityInterface, \yii\fi
     public static function findByUsername($username)
     {       
         
-        return static::findOne(['username'=>$username]);
+        return UserFromBase::findOne(['username'=>$username]);
     }
 
     /**
@@ -135,26 +128,5 @@ class User extends ActiveRecord   implements \yii\web\IdentityInterface, \yii\fi
     {
         return $this->password === $password;
     }
-
-    public function getRateLimit($request, $action)
-    {
-        return [$this->rateLimit,10]; // $rateLimit запросов в секунду
-    }
-    
-    public function loadAllowance($request, $action)
-    {
-        return [$this->allowance, $this->allowance_updated_at];
-    }
-    
-    public function saveAllowance($request, $action, $allowance, $timestamp)
-    {
-        
-     
-        $this->allowance = $allowance;
-        $this->allowance_updated_at = $timestamp;
-        $this->save();
-    }
-
-
 
 }

@@ -4,6 +4,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Api;
 use yii\rest\Controller;
+use yii\filters\RateLimiter;
 use yii\filters\auth\HttpBasicAuth;
 
 class ApiController extends Controller
@@ -18,6 +19,12 @@ class ApiController extends Controller
     $behaviors['authenticator'] = [
         'class' => HttpBasicAuth::class,
     ];
+    $behaviors['rateLimiter'] = [
+        'class' => RateLimiter::className(),
+        'enableRateLimitHeaders' => true
+    ];
+
+    
     return $behaviors;
 } 
 
