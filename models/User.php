@@ -23,10 +23,7 @@ class User extends ActiveRecord   implements \yii\web\IdentityInterface, \yii\fi
 {
 
 
-    public $rateLimit=5;
-    public $allowance_updated_at;
-
-    public $allowance;
+  
 
 
     public static function tableName()
@@ -138,7 +135,7 @@ class User extends ActiveRecord   implements \yii\web\IdentityInterface, \yii\fi
 
     public function getRateLimit($request, $action)
     {
-        return [$this->rateLimit,10]; // $rateLimit запросов в секунду
+        return [1,2]; // $rateLimit запросов в секунду
     }
     
     public function loadAllowance($request, $action)
