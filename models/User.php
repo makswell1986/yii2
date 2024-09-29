@@ -24,8 +24,6 @@ class User extends ActiveRecord   implements \yii\web\IdentityInterface, \yii\fi
 
 
   
-
-
     public static function tableName()
     {
         return 'user';
@@ -135,7 +133,7 @@ class User extends ActiveRecord   implements \yii\web\IdentityInterface, \yii\fi
 
     public function getRateLimit($request, $action)
     {
-        return [1,2]; // $rateLimit запросов в секунду
+        return [1,2]; // не более 1 вызова в 2 секунды
     }
     
     public function loadAllowance($request, $action)
