@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace app\modules\v1\models;
 
 use Yii;
 use app\models\UserFromBase;
@@ -133,7 +133,7 @@ class User extends ActiveRecord   implements \yii\web\IdentityInterface, \yii\fi
 
     public function getRateLimit($request, $action)
     {
-        return [1,1]; // не более 1 вызова в 2 секунды
+        return [1,2]; // не более 1 вызова в 2 секунды
     }
     
     public function loadAllowance($request, $action)

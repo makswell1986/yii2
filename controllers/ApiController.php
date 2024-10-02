@@ -3,6 +3,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Api;
+use yii\web\Response;
 use yii\rest\Controller;
 use yii\filters\RateLimiter;
 use yii\filters\auth\HttpBasicAuth;
@@ -24,7 +25,15 @@ class ApiController extends Controller
         'enableRateLimitHeaders' => true
     ];
 
-    
+    $behaviors[]=
+        ['class' => 'yii\filters\ContentNegotiator',
+                'formats' => [
+            'application/json' => Response::FORMAT_JSON]
+        ];
+
+
+        
+
     return $behaviors;
 } 
 

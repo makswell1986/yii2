@@ -11,7 +11,26 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+    'modules' => [
+        'v1' => [
+            'class' => 'app\modules\v1\Module',
+        ],
+        'v2' => [
+            'class' => 'app\modules\v2\Module',
+        ],
+    ],
     'components' => [
+
+    'log' => [
+                'targets' => [
+                    [
+                        'class' => 'yii\log\DbTarget',
+                        'levels' => ['error', 'warning'],
+                    ],
+                    ],
+                ],
+            
+        
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'SWZr28vwrJMUKdNQ5rUfb0yTTjCYSlho',
@@ -37,7 +56,7 @@ $config = [
             // send all mails to a file by default.
             'useFileTransport' => true,
         ],
-        'log' => [
+        /* 'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [
@@ -45,7 +64,7 @@ $config = [
                     'levels' => ['error', 'warning'],
                 ],
             ],
-        ],
+        ], */
         'db' => $db,
   
         'urlManager' => [
@@ -53,7 +72,7 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 /*'<action:[-a-zA-Z0-9_]+>' => 'site/<action>',*/
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'api', 'except' => ['delete', 'create', 'update']],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'v1/api'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'news'] 
             ],
         ],
