@@ -11,14 +11,25 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+    'modules' => [
+        'v1' => [
+            'class' => 'app\modules\v1\Module',
+        ],
+        'v2' => [
+            'class' => 'app\modules\v2\Module',
+        ],
+    ],
+    
+
     'components' => [
+        
+
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'SWZr28vwrJMUKdNQ5rUfb0yTTjCYSlho',
             'baseUrl'=>'',
-            'parsers' => [
-        'application/json' => 'yii\web\JsonParser',
-            ],
+            
+            
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -41,8 +52,9 @@ $config = [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [
-                    'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
+                    'class' => 'app\components\log\MyDbTarget',
+                    'levels' => ['error', 'warning','trace'],
+                    
                 ],
             ],
         ],
@@ -53,7 +65,7 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 /*'<action:[-a-zA-Z0-9_]+>' => 'site/<action>',*/
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'api', 'except' => ['delete', 'create', 'update']],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'v1/api'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'news'] 
             ],
         ],

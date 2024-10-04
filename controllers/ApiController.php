@@ -15,15 +15,22 @@ class ApiController extends Controller
 
 
     public function behaviors()
-{
+
+    {
     $behaviors = parent::behaviors();
+    
+
     $behaviors['authenticator'] = [
         'class' => HttpBasicAuth::class,
         //'class'=>HttpBearerAuth::class,
     ];
+    $behaviors['rateLimiter'] = [
+        'class' => RateLimiter::className(),
+        'enableRateLimitHeaders' => true,
+    ]; 
     
 
-   //$behaviors['rateLimiter']['enableRateLimitHeaders'] = true;
+  //$behaviors['rateLimiter']['enableRateLimitHeaders'] = false;
     return $behaviors;
 } 
 
@@ -34,7 +41,7 @@ class ApiController extends Controller
 
     public function actionView($code)
     {
-   
+        
         
         return Api::findOne($code);
     }
