@@ -64,14 +64,37 @@ class ApiController extends Controller
     public function actionView($code)
     {
         
-      
+  
         return Api::findOne($code);
       
     }
 
 
+    public function actionPost()
+    {
+        
+  
+        $model = new Api();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+           if ($model->save()){
+            $response = Yii::$app->response;
+            $response->format = Response::FORMAT_JSON;
+            $response->data = ['status' => 'ok'];
+           }
+        }
 
-    public function actionInfo($message)
+        return $this->render('contact', [
+            'model' => $model,
+        ]);
+      
+    }
+
+
+
+/*-------------------- Check code ------------------------*/
+
+/*
+public function actionInfo($message)
 {
     Yii::$app->response->format = Response::FORMAT_JSON;
     return [
@@ -79,6 +102,7 @@ class ApiController extends Controller
         'code' => 100,
     ];
 }
+*/
 
  
 }

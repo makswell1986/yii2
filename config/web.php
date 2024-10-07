@@ -20,24 +20,12 @@ $config = [
         ],
     ],
     'components' => [
-
-    'log' => [
-                'targets' => [
-                    [
-                        'class' => 'yii\log\DbTarget',
-                        'levels' => ['error', 'warning'],
-                    ],
-                    ],
-                ],
-            
-        
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'SWZr28vwrJMUKdNQ5rUfb0yTTjCYSlho',
             'baseUrl'=>'',
-            'parsers' => [
-        'application/json' => 'yii\web\JsonParser',
-            ],
+            
+            
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -45,7 +33,7 @@ $config = [
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
-            'enableSession'=>false
+            'enableSession'=>true
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -56,18 +44,19 @@ $config = [
             // send all mails to a file by default.
             'useFileTransport' => true,
         ],
-        /* 'log' => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
-            'targets' => [
-                [
-                    'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
-                ],
+        'log' => [
+        'traceLevel' => YII_DEBUG ? 3 : 0,
+        'targets' => [
+            [
+                'class' => 'app\components\log\MyDbTarget',
+                'levels' => ['error', 'warning'],
+               
+                
             ],
-        ], */
-        'db' => $db,
-  
-        'urlManager' => [
+        ],
+    ], 
+    'db' => $db,
+    'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
@@ -78,6 +67,13 @@ $config = [
         ],
   
     ],
+  
+
+  
+        
+
+    
+
     'params' => $params,
 ];
 

@@ -66,6 +66,8 @@ class User extends ActiveRecord   implements \yii\web\IdentityInterface, \yii\fi
     }
 
 
+    /*-------------------- АВТОРИЗАЦИЯ -------------------------------*/
+
     /**
      * {@inheritdoc}
      */
@@ -131,9 +133,14 @@ class User extends ActiveRecord   implements \yii\web\IdentityInterface, \yii\fi
         return $this->password === $password;
     }
 
+
+
+
+    /*------------------------   ОГРАНИЧЕНИЕ ЗАПРОСОВ ДЛЯ API ----------------------------*/
+
     public function getRateLimit($request, $action)
     {
-        return [1,1]; // не более 1 вызова в 2 секунды
+        return [1,2]; // не более 1 вызова в 2 секунды
     }
     
     public function loadAllowance($request, $action)
@@ -149,7 +156,6 @@ class User extends ActiveRecord   implements \yii\web\IdentityInterface, \yii\fi
         $this->allowance_updated_at = $timestamp;
         $this->save();
     }
-
 
 
 }
