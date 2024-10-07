@@ -11,10 +11,6 @@ use yii\filters\auth\HttpBearerAuth;
 
 class ApiController extends Controller
 {
-
-
-
-
     public function behaviors()
 
     {
@@ -72,21 +68,34 @@ class ApiController extends Controller
 
     public function actionPost()
     {
-        
+        print_r(Yii::$app->request);
+        exit;
   
         $model = new Api();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-           if ($model->save()){
+        if ($model->load(Yii::$app->getRequest()->getBodyParams()) && $model->validate()) {
+           
+        
+            if ($model->save() == null){
+
+            $response = Yii::$app->response;
+            //Yii::$app->response->statusCode = 200;
+            $response->format = Response::FORMAT_JSON;
+            $response->data = ['message' => 'false'];
+    
+    
+            return $response;
+          
+            
+           } else {
+
             $response = Yii::$app->response;
             $response->format = Response::FORMAT_JSON;
             $response->data = ['status' => 'ok'];
+            return $response;
            }
         }
 
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
-      
+
     }
 
 
