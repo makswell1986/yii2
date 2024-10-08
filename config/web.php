@@ -24,7 +24,7 @@ $config = [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'SWZr28vwrJMUKdNQ5rUfb0yTTjCYSlho',
             'baseUrl'=>'',
-            //'application/json' => 'yii\web\JsonParser'
+            'parsers'=>['application/json' => 'yii\web\JsonParser'],
             
             
         ],
@@ -51,8 +51,7 @@ $config = [
             [
                 'class' => 'app\components\log\MyDbTarget',
                 'levels' => ['error', 'warning'],
-               
-                
+                  
             ],
         ],
     ], 

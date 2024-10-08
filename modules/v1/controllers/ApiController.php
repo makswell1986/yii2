@@ -68,35 +68,42 @@ class ApiController extends Controller
 
     public function actionPost()
     {
-        print_r(Yii::$app->request);
-        exit;
+        
+    
   
         $model = new Api();
-        if ($model->load(Yii::$app->getRequest()->getBodyParams()) && $model->validate()) {
+
+        $mass=Yii::$app->request->BodyParams;
+        $model->attributes=$mass;
+        //if ($model->load(Yii::$app->request->post()) && $model->validate()) {
            
-        
-            if ($model->save() == null){
+
+            
+         
+            if ($model->save()){
 
             $response = Yii::$app->response;
             //Yii::$app->response->statusCode = 200;
             $response->format = Response::FORMAT_JSON;
-            $response->data = ['message' => 'false'];
+            $response->data = ['message' => 'ok'];
     
     
             return $response;
           
             
-           } else {
+           } 
+
+
 
             $response = Yii::$app->response;
             $response->format = Response::FORMAT_JSON;
-            $response->data = ['status' => 'ok'];
+            $response->data = ['status' => 'false'];
             return $response;
            }
-        }
+        
 
 
-    }
+
 
 
 
