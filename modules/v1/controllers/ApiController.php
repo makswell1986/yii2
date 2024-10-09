@@ -2,7 +2,7 @@
 namespace app\modules\v1\controllers;
 
 use Yii;
-use app\models\Api;
+use app\modules\v1\models\Api;
 use yii\web\Response;
 use yii\rest\Controller;
 use yii\filters\RateLimiter;
@@ -74,16 +74,28 @@ class ApiController extends Controller
         $model = new Api();
 
         $mass=Yii::$app->request->BodyParams;
-        $model->attributes=$mass;
-        //if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-           
 
-            
+               
+        $model['Code']=$mass['Code'];
+        $model['Klassifikator']=$mass['Klassifikator'];
+        $model['Klassifikator_ru']=$mass['Klassifikator_ru'];
+        $model['Klassifikator_en']=$mass['Klassifikator_en'];
+        foreach ($mass as $key=>$value){
+           if (gettype($key)=='integer'){
+           $model['god']=$value;
+           }
+
+
+        }
+
          
+      
+    
+
             if ($model->save()){
 
             $response = Yii::$app->response;
-            //Yii::$app->response->statusCode = 200;
+            Yii::$app->response->statusCode = 200;
             $response->format = Response::FORMAT_JSON;
             $response->data = ['message' => 'ok'];
     

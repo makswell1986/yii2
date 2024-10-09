@@ -3,6 +3,7 @@
 namespace app\modules\v1\models;
 
 use Yii;
+use yii\base\Model;
 
 
 
@@ -49,14 +50,15 @@ class Api extends \yii\db\ActiveRecord
             [['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022'], 'number'],
             [['Klassifikator'], 'string', 'max' => 29],
             [['Klassifikator_ru'], 'string', 'max' => 25],
-            [['Klassifikator_en'], 'string', 'max' => 26],
-            [['2023'], 'string', 'max' => 18],
+            [['Klassifikator_en'], 'string', 'max' => 26, ],
+            [['2023'], 'safe'],
         ];
     }
 
     /**
      * {@inheritdoc}
      */
+
     public function attributeLabels()
     {
         return [
@@ -80,4 +82,17 @@ class Api extends \yii\db\ActiveRecord
             '2023' => '2023',
         ];
     }
+   
+/* 
+    public function fields()
+    {
+        return [
+           
+            '2010' => 'email_address',
+            
+            
+        ];
+    } */
+
+
 }
