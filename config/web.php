@@ -50,7 +50,8 @@ $config = [
         'targets' => [
             [
                 'class' => 'app\components\log\MyDbTarget',
-                'levels' => ['error', 'warning'],
+                'levels' => ['info'],
+             
                   
             ],
         ],
