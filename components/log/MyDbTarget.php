@@ -1,7 +1,9 @@
 <?php
 namespace app\components\log;
 
+use Yii;
 use yii\log\Logger;
+use yii\helpers\Json;
 use yii\helpers\VarDumper;
 use yii\log\LogRuntimeException;
 
@@ -11,7 +13,10 @@ class MyDbTarget extends \yii\log\DbTarget
 {
 // Переопределяем, добавляем, изменяем
 public function export()
+
     {
+       $request=Json::encode(Yii::$app->request->bodyParams);
+   
         if ($this->db->getTransaction()) {
             // create new database connection, if there is an open transaction
             // to ensure insert statement is not affected by a rollback
@@ -19,8 +24,8 @@ public function export()
         }
 
         $tableName = $this->db->quoteTableName($this->logTable);
-        $sql = "INSERT INTO $tableName ([[level]], [[category]], [[log_time]], [[prefix]], [[message]])
-                VALUES (:level, :category, :log_time, :prefix, :message)";
+        $sql = "INSERT INTO $tableName ([[level]], [[category]], [[log_time]], [[prefix]], [[message]],[[request]])
+                VALUES (:level, :category, :log_time, :prefix, :message,:request)";
         $command = $this->db->createCommand($sql);
    
 
@@ -42,6 +47,7 @@ public function export()
                     ':log_time' => date("Y-m-d H:i:s"),
                     ':prefix' => $this->getMessagePrefix($message),
                     ':message' => $text,
+                    ':request'=>$request
                 ])->execute() > 0
             ) {
                 continue;

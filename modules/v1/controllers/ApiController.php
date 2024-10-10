@@ -71,24 +71,31 @@ class ApiController extends Controller
         
     
   
-        $model = new Api();
+    
 
         $mass=Yii::$app->request->BodyParams;
 
-               
-        $model['Code']=$mass['Code'];
-        $model['Klassifikator']=$mass['Klassifikator'];
-        $model['Klassifikator_ru']=$mass['Klassifikator_ru'];
-        $model['Klassifikator_en']=$mass['Klassifikator_en'];
-        foreach ($mass as $key=>$value){
-           if (gettype($key)=='integer'){
-           $model['god']=$value;
-           }
 
+      
+
+        foreach ($mass as $key=>$value){       
+             
+        if (gettype($key)=='integer'){
+            $model = new Api();
+            $model['Code']=$mass['Code'];
+            $model['Klassifikator']=$mass['Klassifikator'];
+            $model['Klassifikator_ru']=$mass['Klassifikator_ru'];
+            $model['Klassifikator_en']=$mass['Klassifikator_en']; 
+           
+            $model['pokazatel']=$value;
+            $model['god']=$key;
+            $model->save();     
+        }
+        
 
         }
-
-         
+       
+    
       
     
 
@@ -97,7 +104,7 @@ class ApiController extends Controller
             $response = Yii::$app->response;
             Yii::$app->response->statusCode = 200;
             $response->format = Response::FORMAT_JSON;
-            $response->data = ['message' => 'ok'];
+            $response->data = ['message' => 'ok','code'=>'200'];
     
     
             return $response;
@@ -107,10 +114,10 @@ class ApiController extends Controller
 
 
 
-            $response = Yii::$app->response;
+         /*    $response = Yii::$app->response;
             $response->format = Response::FORMAT_JSON;
-            $response->data = ['status' => 'false'];
-            return $response;
+            $response->data = ['message' => 'false','code'=>'200'];
+            return $response; */
            }
         
 

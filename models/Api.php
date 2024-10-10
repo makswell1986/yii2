@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\v1\models;
+namespace app\models;
 
 use Yii;
 
@@ -29,13 +29,12 @@ class Api extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Code', 'god'], 'required'],
+            [['Code', 'god','pokazatel'], 'required'],
             [['Code', 'god'], 'integer'],
             [['Klassifikator'], 'string', 'max' => 29],
             [['Klassifikator_ru'], 'string', 'max' => 25],
             [['Klassifikator_en'], 'string', 'max' => 26],
-            [['pokazatel'], 'number'],
-            
+            [['Code'], 'unique'],
         ];
     }
 
