@@ -54,6 +54,23 @@ $config = [
              
                   
             ],
+            [
+                'class' => 'yii\log\FileTarget',
+                'levels' => ['info'],
+                'categories' => ['yii\db\Command::query'],
+                'logFile' => '@runtime/logs/query.log', // Для отслеживания только чтения данных
+            ],
+            [
+                'class' => 'yii\log\FileTarget',
+                'levels' => ['info'],
+                'categories' => ['yii\db\Command::execute'],
+                'logFile' => '@runtime/logs/execute.log', // Для отслеживания операций модификации данных
+            ],
+
+
+
+
+
         ],
     ], 
     'db' => $db,

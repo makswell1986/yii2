@@ -25,7 +25,7 @@ public function export()
         }
 
         $tableName = $this->db->quoteTableName($this->logTable);
-        $sql = "INSERT INTO $tableName ([[level]], [[category]], [[log_time]], [[prefix]], [[message]],[[request_body]])
+        $sql = "INSERT INTO $tableName ([[level]], [[category]], [[log_time]], [[prefix]], [[message]],[[request_body1]])
                 VALUES (:level, :category, :log_time, :prefix, :message,:request_body)";
         $command = $this->db->createCommand($sql);
    
