@@ -9,7 +9,7 @@ use yii\web\Response;
 use yii\rest\Controller;
 use yii\filters\RateLimiter;
 use app\modules\v1\models\Api;
-use yii\filters\auth\HttpBasicAuth;
+use yii\filters\auth\HttpBearerAuth;
 
 
 
@@ -28,7 +28,7 @@ class ApiController extends Controller
                 
                 'authenticator'=>[
         
-                    'class' => HttpBasicAuth::class
+                    'class' => HttpBearerAuth::class
                 ],
      
                 'rateLimiter'=>[
@@ -49,11 +49,7 @@ class ApiController extends Controller
 
 
         ];
-          
-    
-
-  
-
+   
 } 
 
 
@@ -62,10 +58,8 @@ class ApiController extends Controller
      
 
     public function actionView($code)
-    {
-        
-  
-        return Api::findOne($code);
+    {        
+          return Api::findOne($code);
       
     }
 
@@ -82,16 +76,7 @@ class ApiController extends Controller
         $mass=Yii::$app->request->BodyParams;
 
         
-/*     try {
-        $this->checkVar($mass['Code']);
-        $this->checkVar($mass['Klassifikator']);
-        $this->checkVar($mass['Klassifikator_ru']);
-        $this->checkVar($mass['Klassifikator_en']);
-    } catch (Exception $e) {
-        Yii::info('не указано переменная');
-        exit;
 
-    } */
 
 
         foreach ($mass as $key=>$value){       
@@ -106,7 +91,7 @@ class ApiController extends Controller
            
             $model['pokazatel']=$value;
             $model['god']=$key;
-            
+            $model->save();
         }
     }
 
@@ -122,7 +107,7 @@ class ApiController extends Controller
           
             
            } 
-
+        
 
 
         $response = Yii::$app->response;
@@ -131,8 +116,74 @@ class ApiController extends Controller
             Yii::info('The data is not recordered');
             return $response;
            }
-        }
-    
+        
+        
+
+
+
+
+
+
+
+           
+           /**
+            * actionPostupdate - updating a record in the database
+            *
+            * @return void
+            */
+           public function actionPostupdate()
+           {
+            
+            $request=Yii::$app->request;
+            
+            $mass=$request->BodyParams;  
+
+            $model = Api::find()
+            ->where(['god' => 2010])
+            ->one();
+            $model->pokazatel = $mass['2010'];
+                      
+       
+                   if ($model->save()){
+       
+                   $response = Yii::$app->response;
+                   Yii::$app->response->statusCode = 200;
+                   $response->format = Response::FORMAT_JSON;
+                   $response->data = ['message' => 'ok','code'=>'200'];
+           
+           
+                   return $response;
+                 
+                   
+                  } 
+               
+       
+       
+               $response = Yii::$app->response;
+                   $response->format = Response::FORMAT_JSON;
+                   $response->data = ['message' => 'false','code'=>'200'];
+                   Yii::info('The data is not recordered');
+                   return $response;
+                  }
+               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  * checkVar - check income variable
@@ -140,21 +191,28 @@ class ApiController extends Controller
  * @param  mixed $val
  * @return void
  */
-private function checkVar($val){
+/* private function checkVar($val){
 if (!$val){
     throw new ErrorException('The variable is not defined');
 }
   
    
-} 
+}  */
 
 
 
 
 
 
-/*-------------------- Check code ------------------------*/
 
+
+/*
+/**
+ * actionInfo 
+ *
+ * @param  mixed $message
+ * @return void
+ */
 /*
 public function actionInfo($message)
 {
