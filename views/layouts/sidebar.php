@@ -106,7 +106,7 @@ for ($i=0; $i<count($tables); $i++){?>
 
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
             
-          <?= Html::a('<i class="fa fa-fw fa-table"><span class="nav-link-text"></i>'.$tables[$i]['Tables_in_boxer'].'</span>', ['sdmx2402/index'], ['class' => 'nav-link'])?>         
+          <?= Html::a('<i class="fa fa-fw fa-table"><span class="nav-link-text"></i>'.$tables[$i]['Tables_in_boxer'].'</span>', [$tables[$i]['Tables_in_boxer'].'/index'], ['class' => 'nav-link'])?>         
           </li>
 <?}?> </ul> <?} else {?>
 
