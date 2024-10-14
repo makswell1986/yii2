@@ -1,19 +1,21 @@
 <?php
 
-namespace app\modules\v1\models;
+namespace app\models;
 
 use Yii;
 
 /**
- * This is the model class for table "sdmx_data_2402__1_".
+ * This is the model class for table "table_sdmx_data_2402__1_".
  *
+ * @property int $id
  * @property int $Code
  * @property string|null $Klassifikator
  * @property string|null $Klassifikator_ru
  * @property string|null $Klassifikator_en
+ * @property string $pokazatel
  * @property int $god
  */
-class Api extends \yii\db\ActiveRecord
+class TableSdmxData24021 extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -29,13 +31,12 @@ class Api extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Code', 'god'], 'required'],
+            [['Code', 'pokazatel', 'god'], 'required'],
             [['Code', 'god'], 'integer'],
             [['Klassifikator'], 'string', 'max' => 29],
             [['Klassifikator_ru'], 'string', 'max' => 25],
             [['Klassifikator_en'], 'string', 'max' => 26],
-            [['pokazatel'], 'number'],
-            
+            [['pokazatel'], 'string', 'max' => 15],
         ];
     }
 
@@ -45,6 +46,7 @@ class Api extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
+            'id' => 'ID',
             'Code' => 'Code',
             'Klassifikator' => 'Klassifikator',
             'Klassifikator_ru' => 'Klassifikator Ru',

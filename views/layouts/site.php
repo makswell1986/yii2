@@ -149,12 +149,12 @@ $this->beginPage(); ?>
             </form>
           </li>
           <li class="nav-item">
-             
-                   
-                 <? if (Yii::$app->user->isGuest){  ?>
+
+          <?  if (Yii::$app->user->isGuest){  ?>
                     <div class="nav-a"><?= Html::a('<i class="fa fa-fw fa-sign-in"></i>Login', ['site/login'], ['class' => '']) ?></div>
                     
                  <? } else { ?>
+
                   <div class="nav-a2"> <?= Html::beginForm(['/site/logout'])
                     . Html::submitButton(
                         '<i class="fa fa-fw fa-sign-out"></i>Logout (' . Yii::$app->user->identity->username . ')',

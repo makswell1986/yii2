@@ -59,7 +59,14 @@ class ApiController extends Controller
 
     public function actionView($code)
     {        
-          return Api::findOne($code);
+         
+
+        $model = Api::find()
+            ->where(['Code' => $code])
+            ->one();
+            
+
+        return  $model;
       
     }
 

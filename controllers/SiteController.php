@@ -125,4 +125,21 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+
+
+
+    public function actionTables()
+    {
+
+    
+    $tables = Yii::$app->db->createCommand('Show tables')
+    ->queryAll();
+    Yii::$app->params['tables'] = $tables; 
+        
+        return $this->render('index');
+    }
+
+
+
 }

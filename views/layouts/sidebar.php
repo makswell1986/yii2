@@ -1,3 +1,7 @@
+<?php
+use yii\helpers\Html;
+
+?>
 <!-- <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
             <a class="nav-link" href="index.html">
@@ -90,6 +94,35 @@
           </li>
         </ul> -->
 
+
+<? if (isset(Yii::$app->params['tables'])) {
+ 
+ $tables=Yii::$app->params['tables'];
+
+echo <<<EOT
+<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+EOT;
+for ($i=0; $i<count($tables); $i++){?>
+
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+            
+          <?= Html::a('<i class="fa fa-fw fa-table"><span class="nav-link-text"></i>'.$tables[$i]['Tables_in_boxer'].'</span>', ['TTableSdmxData24021/index'], ['class' => 'nav-link'])?>         
+          </li>
+<?}?> </ul> <?} else {?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
             <a class="nav-link" href="index.html">
@@ -104,10 +137,10 @@
             </a>
           </li>
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-            <a class="nav-link" href="tables.html">
-              <i class="fa fa-fw fa-table"></i>
-              <span class="nav-link-text">Tables</span>
-            </a>
+          
+              
+           <?= Html::a('<i class="fa fa-fw fa-table"><span class="nav-link-text"></i>Tables</span>', ['site/tables'], ['class' => 'nav-link'])?>
+         
           </li>
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
             <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
@@ -182,3 +215,4 @@
           </li>
         </ul> 
 
+<?}?>
