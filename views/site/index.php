@@ -4,8 +4,7 @@
 
 $this->title = 'My Yii Application';
 ?>
-    <div class="content-wrapper">
-      <div class="container-fluid">
+  
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
@@ -857,7 +856,6 @@ $this->title = 'My Yii Application';
             </div>
           </div>
           <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-        </div>
-      </div>
+   
       <!-- /.container-fluid-->
       <!-- /.content-wrapper-->

@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /** @var yii\web\View $this */
-/** @var app\models\TableSdmxData24021 $model */
+/** @var app\models\Sdmx2402 $model */
 /** @var yii\widgets\ActiveForm $form */
 ?>
 
-<div class="table-sdmx-data24021-form">
+<div class="sdmx2402-form">
 
     <?php $form = ActiveForm::begin(); ?>
 

@@ -176,9 +176,12 @@ $this->beginPage(); ?>
       </div>
     </nav>
 
+    <div class="content-wrapper">
+      <div class="container-fluid">
     <?= $content ?>
-
-      <footer class="sticky-footer">
+</div></div>
+    
+    <footer class="sticky-footer">
         <div class="container">
           <div class="text-center">
             <small>Copyright © Your Website 2018</small>

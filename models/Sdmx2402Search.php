@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\TableSdmxData24021;
+use app\models\Sdmx2402;
 
 /**
- * TTableSdmxData24021Search represents the model behind the search form of `app\models\TableSdmxData24021`.
+ * Sdmx2402Search represents the model behind the search form of `app\models\Sdmx2402`.
  */
-class TTableSdmxData24021Search extends TableSdmxData24021
+class Sdmx2402Search extends Sdmx2402
 {
     /**
      * {@inheritdoc}
@@ -40,7 +40,7 @@ class TTableSdmxData24021Search extends TableSdmxData24021
      */
     public function search($params)
     {
-        $query = TableSdmxData24021::find();
+        $query = Sdmx2402::find();
 
         // add conditions that should always apply here
 

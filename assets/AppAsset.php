@@ -34,7 +34,7 @@ class AppAsset extends AssetBundle
         "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js",
         "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js",
         "https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/dataTables.bootstrap4.js",
-         'js/main.js'
+        'js/main.js'
         
     ];
     public $depends = [

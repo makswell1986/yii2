@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
-/** @var app\models\TableSdmxData24021 $model */
+/** @var app\models\Sdmx2402 $model */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Table Sdmx Data24021s', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Sdmx2402s', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="table-sdmx-data24021-view">
+<div class="sdmx2402-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

@@ -2,16 +2,16 @@
 
 namespace app\controllers;
 
-use app\models\TableSdmxData24021;
-use app\models\TTableSdmxData24021Search;
+use app\models\Sdmx2402;
+use app\models\Sdmx2402Search;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * TTableSdmxData24021Controller implements the CRUD actions for TableSdmxData24021 model.
+ * Sdmx2402Controller implements the CRUD actions for Sdmx2402 model.
  */
-class TTableSdmxData24021Controller extends Controller
+class Sdmx2402Controller extends Controller
 {
     /**
      * @inheritDoc
@@ -32,23 +32,23 @@ class TTableSdmxData24021Controller extends Controller
     }
 
     /**
-     * Lists all TableSdmxData24021 models.
+     * Lists all Sdmx2402 models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new TTableSdmxData24021Search();
+        $searchModel = new Sdmx2402Search();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
-        return $this->render('TableSdmxData24021/index', [
+        return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single TableSdmxData24021 model.
+     * Displays a single Sdmx2402 model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -61,13 +61,13 @@ class TTableSdmxData24021Controller extends Controller
     }
 
     /**
-     * Creates a new TableSdmxData24021 model.
+     * Creates a new Sdmx2402 model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new TableSdmxData24021();
+        $model = new Sdmx2402();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -83,7 +83,7 @@ class TTableSdmxData24021Controller extends Controller
     }
 
     /**
-     * Updates an existing TableSdmxData24021 model.
+     * Updates an existing Sdmx2402 model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -103,7 +103,7 @@ class TTableSdmxData24021Controller extends Controller
     }
 
     /**
-     * Deletes an existing TableSdmxData24021 model.
+     * Deletes an existing Sdmx2402 model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -117,15 +117,15 @@ class TTableSdmxData24021Controller extends Controller
     }
 
     /**
-     * Finds the TableSdmxData24021 model based on its primary key value.
+     * Finds the Sdmx2402 model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return TableSdmxData24021 the loaded model
+     * @return Sdmx2402 the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = TableSdmxData24021::findOne(['id' => $id])) !== null) {
+        if (($model = Sdmx2402::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

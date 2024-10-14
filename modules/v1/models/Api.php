@@ -20,7 +20,7 @@ class Api extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'table_sdmx_data_2402__1_';
+        return 'sdmx2402';
     }
 
     /**

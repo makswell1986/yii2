@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "table_sdmx_data_2402__1_".
+ * This is the model class for table "sdmx2402".
  *
  * @property int $id
  * @property int $Code
@@ -15,14 +15,14 @@ use Yii;
  * @property string $pokazatel
  * @property int $god
  */
-class TableSdmxData24021 extends \yii\db\ActiveRecord
+class Sdmx2402 extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'table_sdmx_data_2402__1_';
+        return 'sdmx2402';
     }
 
     /**
