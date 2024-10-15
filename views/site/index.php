@@ -6,12 +6,12 @@ $this->title = 'My Yii Application';
 ?>
   
         <!-- Breadcrumbs-->
-        <ol class="breadcrumb">
+    <!--     <ol class="breadcrumb">
           <li class="breadcrumb-item">
             <a href="#">Dashboard</a>
           </li>
           <li class="breadcrumb-item active">My Dashboard</li>
-        </ol>
+        </ol> -->
         <!-- Icon Cards-->
         <div class="row">
           <div class="col-xl-3 col-sm-6 mb-3">

@@ -178,6 +178,15 @@ $this->beginPage(); ?>
 
     <div class="content-wrapper">
       <div class="container-fluid">
+      <?= 
+   Breadcrumbs::widget([
+      'homeLink' => [ 
+                      'label' => Yii::t('yii', 'Dashboard'),
+                      'url' => Yii::$app->homeUrl,
+                 ],
+      'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+   ]) 
+?>
     <?= $content ?>
 </div></div>
     

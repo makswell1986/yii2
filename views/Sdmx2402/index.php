@@ -34,6 +34,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'Klassifikator',
             'Klassifikator_ru',
             'Klassifikator_en',
+            
+             
             //'pokazatel',
             //'god',
             [
