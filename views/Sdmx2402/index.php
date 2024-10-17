@@ -26,6 +26,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        
+        'pager' => ['class' => 'yii\bootstrap5\LinkPager'],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -34,10 +36,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'Klassifikator',
             'Klassifikator_ru',
             'Klassifikator_en',
-            
-             
-            //'pokazatel',
-            //'god',
+            'pokazatel',
+            'god',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Sdmx2402 $model, $key, $index, $column) {

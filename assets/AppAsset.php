@@ -29,7 +29,7 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         
-        "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js",
+        //"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js",
         "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.5/umd/popper.js",
         "https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js",
         "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js",
@@ -40,6 +40,6 @@ class AppAsset extends AssetBundle
     ];
     public $depends = [
         'yii\web\YiiAsset',
-        //'yii\bootstrap4\BootstrapAsset'
+        //'yii\bootstrap5\BootstrapAsset'
     ];
 }

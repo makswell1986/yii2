@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\Cookie;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
@@ -20,10 +21,10 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['logout'],
+                'only' => ['logout','tables'],
                 'rules' => [
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout','tables'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -135,7 +136,15 @@ class SiteController extends Controller
     
     $tables = Yii::$app->db->createCommand('Show tables')
     ->queryAll();
-    Yii::$app->params['tables'] = $tables; 
+
+    
+    
+   $cookies = Yii::$app->response->cookies;
+
+   $cookies->add(new Cookie([ 'name'=>'GetTablesNames','value' => $tables ]));
+
+   
+
         
         return $this->render('index');
     }
