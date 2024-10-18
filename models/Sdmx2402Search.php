@@ -70,4 +70,20 @@ class Sdmx2402Search extends Sdmx2402
 
         return $dataProvider;
     }
+
+
+    public function exportFields()
+    {
+        return [
+
+            'id',
+            'Code',
+            'Klassifikator',
+            'Klassifikator_ru',
+            'Klassifikator_en',
+            'pokazatel',
+            'god'
+            
+        ];
+    }
 }

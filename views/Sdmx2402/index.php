@@ -6,6 +6,9 @@ use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
+use phpnt\exportFile\ExportFile;
+
+
 /** @var yii\web\View $this */
 /** @var app\models\Sdmx2402Search $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
@@ -22,6 +25,36 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <?
+
+/*     $model=new Sdmx2402 ();
+\moonland\phpexcel\Excel::export([
+	'models' => $model-> 
+	
+]);    
+    
+\moonland\phpexcel\Excel::widget([
+	'models' => $model,
+	'mode' => 'export', //default value as 'export'
+	
+]); */
+
+
+
+
+// минимальные настройки
+echo ExportFile::widget([
+    'model'             => '\models\',   // путь к модели
+    'searchAttributes'  => $searchModel,                    // фильтр
+]) ?>
+
+
+
+
+    
+    
+    ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

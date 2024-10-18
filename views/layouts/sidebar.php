@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
-$cookies = Yii::$app->response->cookies;
+$cookies = Yii::$app->request->cookies;
+
 
 ?>
 <!-- <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
@@ -96,10 +97,11 @@ $cookies = Yii::$app->response->cookies;
         </ul> -->
 
 
-<? if (isset($cookies['GetTablesNames'])){
+<? if ($cookies->has('GetTablesNames')){
 
 
- $tables=$cookies['GetTablesNames'];
+ $tables=$cookies['GetTablesNames']->value;
+
 
 echo <<<EOT
 <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">

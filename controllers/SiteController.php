@@ -94,6 +94,7 @@ class SiteController extends Controller
      */
     public function actionLogout()
     {
+Yii::$app->response->cookies->remove('GetTablesNames');
         Yii::$app->user->logout();
 
         return $this->goHome();
@@ -143,7 +144,7 @@ class SiteController extends Controller
 
    $cookies->add(new Cookie([ 'name'=>'GetTablesNames','value' => $tables ]));
 
-   
+
 
         
         return $this->render('index');

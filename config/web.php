@@ -20,6 +20,10 @@ $config = [
             'class' => 'app\modules\v2\Module',
         ],
     ],
+
+    'controllerMap' => [
+    'export' => 'phpnt\exportFile\controllers\ExportController'
+],
     'components' => [
 
         

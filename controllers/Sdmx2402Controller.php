@@ -131,4 +131,14 @@ class Sdmx2402Controller extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+    public function actionExportFile()
+    {
+        $searchModel = new Sdmx2402Search();
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+
+        return $this->render('export-file', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
 }
