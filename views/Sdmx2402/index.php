@@ -5,6 +5,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
+use kartik\export\ExportMenu;
 
 use phpnt\exportFile\ExportFile;
 
@@ -28,31 +29,26 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?
 
-/*     $model=new Sdmx2402 ();
-\moonland\phpexcel\Excel::export([
-	'models' => $model-> 
-	
+
+$gridColumns = [
+    ['class' => 'yii\grid\SerialColumn'],
+             'id',
+            'Code',
+            'Klassifikator',
+            'Klassifikator_ru',
+            'Klassifikator_en',
+            'pokazatel',
+            'god',
+            ['class' => 'yii\grid\ActionColumn'],
+    
+];
+
+// Renders a export dropdown menu
+echo ExportMenu::widget([
+    'dataProvider' => $dataProvider,
+    'columns' => $gridColumns,
+    'clearBuffers' => true, //optional
 ]);    
-    
-\moonland\phpexcel\Excel::widget([
-	'models' => $model,
-	'mode' => 'export', //default value as 'export'
-	
-]); */
-
-
-
-
-// минимальные настройки
-echo ExportFile::widget([
-    'model'             => '\models\',   // путь к модели
-    'searchAttributes'  => $searchModel,                    // фильтр
-]) ?>
-
-
-
-
-    
     
     ?>
 

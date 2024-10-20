@@ -19,11 +19,14 @@ $config = [
         'v2' => [
             'class' => 'app\modules\v2\Module',
         ],
+
+        'gridview' => [
+        'class' => 'kartik\grid\Module',
+        // other module settings
+    ]
     ],
 
-    'controllerMap' => [
-    'export' => 'phpnt\exportFile\controllers\ExportController'
-],
+     
     'components' => [
 
         

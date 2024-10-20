@@ -48,7 +48,7 @@ public function export()
                     ':log_time' => date("Y-m-d H:i:s"),
                     ':prefix' => $this->getMessagePrefix($message),
                     ':message' => $text,
-                    ':request_body'=>$request_body
+                    ':request_body'=>base64_encode($request_body)
                 ])->execute() > 0
             ) {
                 continue;
