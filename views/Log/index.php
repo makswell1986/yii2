@@ -23,17 +23,17 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-<?php
-    $gridColumns = [
-        ['class' => 'yii\grid\SerialColumn'],
-            'id',
-            'level',
-            'category',
+    <?
+
+
+$gridColumns = [
+     
+             'id',
             'log_time',
-            'prefix:ntext',
-            'message:ntext',
+            'message',
             'request_body',
-            ['class' => 'yii\grid\ActionColumn'], 
+            
+           
     
 ];
 
@@ -42,24 +42,49 @@ echo ExportMenu::widget([
     'dataProvider' => $dataProvider,
     'columns' => $gridColumns,
     'clearBuffers' => true, //optional
-]);   
-
-?>
-
+]);    
+?>    
+    
+    
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'pager' => ['class' => 'yii\bootstrap5\LinkPager'],
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            //['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'level',
-            'category',
+            [
+                'attribute'=>'id',
+                'content'=>function ($model){
+                    return "<pre>".$model->id."</pre>";    
+                },
+               'contentOptions'=>['style'=>'width: 100px;']
+               
+                
+            ],
+            //'level',
+            //'category',
             'log_time',
-            'prefix:ntext',
-            'message:ntext',
-            'request_body',
+            //'prefix:ntext',
+             [
+                'attribute'=>'message',
+                'content'=>function ($model){
+                    return "<pre>".$model->message."</pre>";    
+                },
+               'contentOptions'=>['style'=>'max-width: 300px;']
+               
+                
+            ],
+
+            
+            ['attribute'=>'request_body',
+            'content'=>function ($model) {
+                $content=base64_decode($model->request_body);
+                return "<pre>".$content."</pre>";
+            },
+            'contentOptions'=>['style'=>'max-width: 300px;']
+            
+            ],
+            
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Log $model, $key, $index, $column) {

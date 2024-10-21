@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'log_time',
             'prefix:ntext',
             'message:ntext',
-            'request_body',
+            'request_body:ntext',
         ],
     ]) ?>
 

@@ -22,7 +22,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'message')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'request_body')->textInput() ?>
+    <?= $form->field($model, 'request_body')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

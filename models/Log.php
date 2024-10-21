@@ -32,8 +32,7 @@ class Log extends \yii\db\ActiveRecord
     {
         return [
             [['level'], 'integer'],
-            [['prefix', 'message'], 'string'],
-            [['request_body'], 'safe'],
+            [['prefix', 'message', 'request_body'], 'string'],
             [['category'], 'string', 'max' => 255],
             [['log_time'], 'string', 'max' => 25],
         ];
