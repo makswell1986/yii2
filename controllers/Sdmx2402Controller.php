@@ -2,11 +2,14 @@
 
 namespace app\controllers;
 
-use app\models\Sdmx2402;
-use app\models\Sdmx2402Search;
+use Yii;
 use yii\web\Controller;
-use yii\web\NotFoundHttpException;
+use app\models\Sdmx2402;
+use yii\web\UploadedFile;
+use app\models\UploadcsvFile;
 use yii\filters\VerbFilter;
+use app\models\Sdmx2402Search;
+use yii\web\NotFoundHttpException;
 
 /**
  * Sdmx2402Controller implements the CRUD actions for Sdmx2402 model.
@@ -134,11 +137,30 @@ class Sdmx2402Controller extends Controller
     public function actionExportFile()
     {
         $searchModel = new Sdmx2402Search();
-        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('export-file', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+
+
+    public function actionForm()
+    {
+        $model = new UploadcsvFile();
+
+        if (Yii::$app->request->isPost) {
+
+            $model->file = UploadedFile::getInstance($model, 'file');
+     
+            if ($model->upload()) {
+                return $this->render('_form', ['model' => $model]);
+       
+            }
+        }
+
+        return $this->render('_form', ['model' => $model]);
     }
 }

@@ -10,24 +10,12 @@ use yii\widgets\ActiveForm;
 
 <div class="sdmx2402-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
 
-    <?= $form->field($model, 'Code')->textInput() ?>
+<?= $form->field($model, 'file')->fileInput() ?>
 
-    <?= $form->field($model, 'Klassifikator')->textInput(['maxlength' => true]) ?>
+<button>Submit</button>
 
-    <?= $form->field($model, 'Klassifikator_ru')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'Klassifikator_en')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'pokazatel')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'god')->textInput() ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
+<?php ActiveForm::end() ?>
 
 </div>

@@ -1,12 +1,13 @@
 <?php
 
-use app\models\Sdmx2402;
-use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\grid\ActionColumn;
+use yii\helpers\Html;
 use yii\grid\GridView;
-use kartik\export\ExportMenu;
+use app\models\Sdmx2402;
+use yii\grid\ActionColumn;
+use yii\widgets\ActiveForm;
 
+use kartik\export\ExportMenu;
 use phpnt\exportFile\ExportFile;
 
 
@@ -51,6 +52,11 @@ echo ExportMenu::widget([
 ]);    
     
     ?>
+
+
+<?= Html::a('Upload CSV', ['form'], ['class' => 'btn btn-primary']) ?> 
+
+
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
